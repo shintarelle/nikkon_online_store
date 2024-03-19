@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "../components/mainSlider/mainSlider.css";
+@import "../components/products/new/products.css";
+
 :root {
   --background: 255, 255, 255;
+  --swiper-navigation-size: 30px !important;
 }
 
 body {
@@ -13,5 +17,10 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    --swiper-navigation-size: 15px !important;
   }
 }

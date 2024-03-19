@@ -18,6 +18,7 @@ const config: Config = {
       'dark-grey': '#545454',
       'middle-grey': '#c4c4c4',
       'light-grey': '#aba9a9',
+      'white-grey': '#efeded',
       'powder-pink': '#e8dcdc',
       'powder-beige': '#ebd9d5',
       'powder-red': '#f05151',

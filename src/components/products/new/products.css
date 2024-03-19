@@ -1,0 +1,72 @@
+.product:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  z-index: 20 !important;
+}
+.product:hover .product-btn {
+  display: flex;
+}
+.product-btn {
+  /* box-shadow: 0 0px 15px rgba(0, 0, 0, 0.2); */
+  box-shadow:
+    0 8px 20px -6px rgba(0, 0, 0, 0.2),
+    0 -8px 15px -4px rgba(0, 0, 0, 0),
+    -8px 0 20px -6px rgba(0, 0, 0, 0.2),
+    8px 0 20px -6px rgba(0, 0, 0, 0.2);
+}
+
+/* --------- Slider------------------------*/
+
+.newProductSlider.slick-slider {
+  height: 650px !important;
+  padding: 0 10px !important;
+  overflow: visible !important;
+}
+
+.newProductSlider .slick-list,
+.newProductSlider .slick-track {
+  height: 650px !important;
+  overflow: visible !important;
+}
+.newProductSlider .slick-arrow {
+  position: absolute;
+  top: 250px;
+  z-index: 10;
+  width: 42px;
+  height: 35px;
+}
+
+/* Стрелка влево */
+.newProductSlider .slick-arrow.slick-prev {
+  left: -14px;
+}
+/* Стрелка вправо*/
+.newProductSlider .slick-arrow.slick-next {
+  right: -14px;
+}
+.newProductSlider .slick-arrow.slick-prev:before,
+.newProductSlider .slick-arrow.slick-next:before {
+  content: "";
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 9px;
+  height: 15px;
+  display: inline-block;
+}
+.newProductSlider .slick-arrow.slick-prev:before {
+  background-image: url("/arrow-left.svg");
+}
+.newProductSlider .slick-arrow.slick-next:before {
+  background-image: url("/arrow-right.svg");
+}
+
+/* Стили для высоты слайдера в зависимости от ширины экрана */
+@media screen and (min-width: 768px) {
+  .newProductSlider .slick-arrow.slick-prev:before,
+  .newProductSlider .slick-arrow.slick-next:before {
+    width: 15.34px;
+    height: 25.23px;
+  }
+}
+/*--------------------------------------------------------*/

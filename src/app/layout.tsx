@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Raleway, Arima } from "next/font/google";
 
 import "./globals.css";
+import Header from "@/components/header/Header";
 
 const raleway = Raleway({ subsets: ["latin"] });
 const arial = Arima({ subsets: ["latin"] });
@@ -18,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={raleway.className}>{children}</body>
+      <body className={raleway.className}>
+      <Header />
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

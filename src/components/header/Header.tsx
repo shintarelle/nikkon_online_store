@@ -45,18 +45,18 @@ function Header() {
         </div>
         <ul className='flex justify-between align-center gap-6'>
           <li className='self-center'>
-            <img className='w-[22px] h-[22px] ' src='/search.svg'></img>
+            <Image src='/search.svg' alt='search' width='20' height='20' className='w-[22px] h-[22px]'/>
           </li>
           <li className='self-center flex'>
-            <img className='w-[22px] h-[22px] ' src='/user.svg'></img>
+            <Image src='/user.svg' alt='login' width='20' height='20' className='w-[22px] h-[22px]'/>
             <span className='underline'>Особистий кабінет</span>
 
           </li>
           <li className='self-center'>
-            <img className='w-[22px] h-[22px]' src='/heart.svg'></img>
+            <Image src='/heart.svg' alt='wishlist' width='20' height='20' className='w-[22px] h-[22px]'/>
           </li>
           <li className='self-center'>
-            <img className='w-[22px] h-[22px]' src='/bag.svg'></img>
+            <Image src='/bag.svg' alt='busket' width='20' height='20' className='w-[22px] h-[22px]'/>
           </li>
         </ul>
 
