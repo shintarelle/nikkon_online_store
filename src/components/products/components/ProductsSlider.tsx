@@ -4,13 +4,13 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import ProductCard from './ProductCard'
-import Product from '../../../../app/types'
+import Product from '../../../app/types'
 
 interface NewProductsSliderProps {
   products: Product[];
 }
 
-const NewProductsSlider = ({ products }: NewProductsSliderProps) => {
+const ProductsSlider = ({ products }: NewProductsSliderProps) => {
   const slickSettings = {
     dots: false,
     infinite: false,
@@ -44,17 +44,14 @@ const NewProductsSlider = ({ products }: NewProductsSliderProps) => {
   }
 
   return (
-    <section className='max-w-[1260px] h-full py-5 mx-auto overflow-hidden relative'>
+    <section className='max-w-[1260px] h-full py-7 mx-auto overflow-hidden relative'>
       <Slider
         {...slickSettings}
         className='newProductSlider relative '>
         {products.map(product =>
-        (
-          <div className='p-0 relative' key={product.id}>
+        (<div className='p-0 relative' key={product.id}>
             < ProductCard  product={product} />
-
-          </div>
-        )
+          </div>)
           )}
 
       </Slider>
@@ -63,4 +60,4 @@ const NewProductsSlider = ({ products }: NewProductsSliderProps) => {
 }
 
 
-export default NewProductsSlider
+export default ProductsSlider

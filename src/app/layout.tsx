@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Raleway, Arima } from "next/font/google";
+import { Raleway} from "next/font/google";
 
 import "./globals.css";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 const raleway = Raleway({ subsets: ["latin"] });
-const arial = Arima({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={raleway.className}>
       <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

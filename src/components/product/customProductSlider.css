@@ -1,0 +1,66 @@
+.slick-dots li {
+  width: 65px !important;
+  height: 87px !important;
+  padding: 5px !important;
+  margin: 0 0px !important;
+}
+.slick-dots li:hover {
+  border: 1px solid #000000;
+}
+.slick-dots {
+  position: static !important;
+  bottom: -250px !important;
+  display: block !important;
+  width: 100%;
+  padding: 0;
+
+  list-style: none;
+  text-align: left !important;
+}
+.slick-arrow {
+  display: none !important;
+}
+
+@media screen and (min-width: 400px) {
+  .slick-dots li {
+    width: 100px !important;
+    height: 138px !important;
+    padding: 5px !important;
+    margin: 0 0px !important;
+  }
+}
+@media screen and (min-width: 640px) {
+  .slick-dots li {
+    width: 110px !important;
+    height: 150px !important;
+    padding: 10px !important;
+    margin: 0 0px !important;
+  }
+}
+/* @media screen and (min-width: 768px) {
+  .slick-dots {
+    position: absolute;
+    bottom: -375px !important;
+    display: block !important;
+    width: 100%;
+    padding: 0;
+
+    list-style: none;
+    text-align: left !important;
+  }
+  .slick-dots li {
+    width: 95px !important;
+    height: 130px !important;
+    padding: 5px !important;
+  }
+} */
+/* @media screen and (min-width: 1024px) {
+  .slick-dots {
+    bottom: -275px !important;
+  }
+  .slick-dots li {
+    width: 100px !important;
+    height: 135px !important;
+    padding: 10px !important;
+  }
+} */

@@ -1,6 +1,8 @@
+
 import React from 'react'
 import Button from './components/Button'
 import Image from 'next/image';
+import { menu } from '../../../data.js';
 
 import { Tenor_Sans } from "next/font/google";
 
@@ -9,7 +11,6 @@ const tenorSans = Tenor_Sans({
   weight: '400'
 });
 
-const menu = ['Піжами', 'Нічні сорочки', 'Халати', 'Домашні костюми', 'Світшоти', 'Штани та легінси']
 
 function Header() {
   return (
@@ -64,12 +65,11 @@ function Header() {
       <nav className='flex justify-center h-[50px]'>
         <ul className='flex gap-0 lg:gap-7  my-0 mx-auto self-center'>
           {menu.map(item => (
-          <li className='' key={item}>
-              <a href='#' className='block uppercase font-semibold text-sm no-underline text-black px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item}</a>
+          <li className='' key={item.name}>
+              <a href={item.link} className='block uppercase font-semibold text-sm no-underline text-black px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item.name}</a>
             </li>
           ))}
         </ul>
-
       </nav>
     </header>
   )

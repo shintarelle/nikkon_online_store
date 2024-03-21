@@ -8,4 +8,5 @@ export default interface Product {
   category?: string;
   type?: string;
   discount?: number;
+  size: string[]
 }
