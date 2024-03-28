@@ -1,6 +1,9 @@
 import CustomPaging from "@/components/product/components/CustomProductSlider";
 import ProductDescription from "@/components/product/components/ProductDescription";
 import { productsArray } from '../../../../data.js'
+import Scale3 from "@/components/product/components/Scale3";
+import Scale2 from "@/components/product/components/Scale2";
+import Scale4 from "@/components/product/components/Scale4";
 
 const item = productsArray[0]
 
@@ -17,6 +20,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
       </div>
+      <h2 className="p-[100px]">rerfd</h2>
+
+      <Scale4 />
     </>
   )
 }
