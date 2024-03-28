@@ -13,7 +13,9 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import Link from 'next/link';
 
-const slider = ['/slide1.jpeg', '/slide1.jpeg', '/slide1.jpeg']
+import { slider } from '../../../data.js'
+
+
 
 function MainSlider() {
   return (
@@ -32,7 +34,8 @@ function MainSlider() {
       {slider.map((slider, index) =>
         <SwiperSlide key={slider + index} className="h-[362px] bg-light-gray">
           <Link href={'#'}>
-            <Image src='/slide1.jpeg' width='1000' height='362' alt='slide1'  className='w-full h-362'/>
+            {/* будет ли тут куда то переходить? */}
+            <Image src={`${slider}`} width='1000' height='362' alt='slide1'  className='w-full h-362'/>
           </Link>
         </SwiperSlide>)}
       </Swiper>
