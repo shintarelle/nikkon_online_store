@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { menu } from '../../../data.js';
 
 import { Tenor_Sans } from "next/font/google";
+import SearchInput from '../search/SearchInput';
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -46,11 +47,11 @@ function Header() {
         </div>
         <ul className='flex justify-between align-center gap-6'>
           <li className='self-center'>
-            <Image src='/search.svg' alt='search' width='20' height='20' className='w-[22px] h-[22px]'/>
+            <SearchInput />
           </li>
           <li className='self-center flex'>
             <Image src='/user.svg' alt='login' width='20' height='20' className='w-[22px] h-[22px]'/>
-            <span className='underline'>Особистий кабінет</span>
+            <span className='underline hidden ml:inline-block'>Особистий кабінет</span>
 
           </li>
           <li className='self-center'>
@@ -66,7 +67,7 @@ function Header() {
         <ul className='flex gap-0 lg:gap-7  my-0 mx-auto self-center'>
           {menu.map(item => (
           <li className='' key={item.name}>
-              <a href={item.link} className='block uppercase font-semibold text-sm no-underline text-black px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item.name}</a>
+              <a href={item.link} className='block uppercase font-semibold text-sm no-underline text-black px-[8px] ml:px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item.name}</a>
             </li>
           ))}
         </ul>

@@ -1,6 +1,6 @@
 import CustomProductSlider from "@/components/product/components/CustomProductSlider";
 import ProductDescription from "@/components/product/components/ProductDescription";
-import { productsArray } from '../../../../data.js'
+import { productsArray } from '../../../data.js'
 
 export default function Page({ params }: { params: { id: string } }) {
   const identificator = Number(params.id)

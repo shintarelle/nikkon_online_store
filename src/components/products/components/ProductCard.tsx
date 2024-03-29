@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image';
 import Button from '@/components/header/components/Button';
 import Product from '../../../app/types'
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 
 // Определяем интерфейс для компонента ProductCard
@@ -13,11 +13,17 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const pathname = usePathname() //получаем путь
+  const router = useRouter()
   const { id, vendorCode, title, price, image, category, type, discount } = product; // Деструктурируем свойства продукта
+
+  const handleBuy = () => {
+    router.push(`/${id}`);
+  };
+
   return (
     <div className='p-[10px] max-w-[310px] relative bg-white product absolute top-0 left-0'>
       <div className='flex flex-col '>
-        <Link href={`${pathname}/${id}`} className='block  relative overflow-hidden'>
+        <Link href={`/${id}`} className='block  relative overflow-hidden'>
           <Image src={image[0]} alt='link' width={100} height={100}  className='w-full h-auto aspect-[2.8/4]'
             // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
@@ -35,7 +41,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
         <div className='w-full flex justify-between hidden product-btn p-[10px] pt-4  absolute -bottom-[66px] left-0 z-9 bg-white'>
-          <Button title="Купити" textSize='base' />
+          <Button title="Купити" textSize='base' onClick={handleBuy} />
           <Image src='/heart-solid.svg' alt='wishlist' width='20' height='20' className='w-[22px] h-[22px]'/>
         </div>
       </div>
