@@ -36,7 +36,7 @@ const SearchInput = () => {
 };
 
   return (
-    <div className="search-input">
+    <div className="search-input flex justify-center align-center">
       {isOpen ? (
         <input
           ref={inputRef}
