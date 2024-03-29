@@ -5,18 +5,21 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Link from "next/link";
 import Image from 'next/image';
-import { pictures } from '../../../../data.js'
+import { productsArray } from '../../../../data.js'
 
-// import { baseUrl } from "./config";
-const baseUrl = ''
 
-function CustomProductSlider() {
+interface CustomProductSliderProps {
+  id: number;
+}
+const CustomProductSlider = ({ id }: CustomProductSliderProps) => {
+  const product = productsArray.find(product => product.id === id)
   const settings = {
     customPaging: function (i: number) {
       return (
-        //   {/* <img src={`${baseUrl}/product${i + 1}.jpg`} /> */}
 
-        <Image src={`/product${i + 1}.jpeg`} alt='link' width={100} height={100} className='w-full h-auto aspect-[2.8/4]'
+        // пока не работает маленький список как нужно !!!!! добавляет li но он без key
+
+        <Image src={product?.image[i] || ''} alt='link' width={100} height={100} className='w-full h-auto aspect-[2.8/4]'
         />
       );
     },
@@ -36,19 +39,20 @@ function CustomProductSlider() {
 
     ],
     appendDots: (dots: JSX.Element[]) => (
-      <ul className="slick-dots ">
-        {pictures.map((_, index) => (
-          <>{dots[index]}</>
-        ))}
-      </ul>
-    ),
+  <ul className="slick-dots ">
+    {product?.image.map((_, index) => (
+      dots[index]
+    ))}
+  </ul>
+),
   };
   return (
     <div className="md:max-w-[470px] lg:max-w-[700px] pt-[10px]">
       <Slider {...settings}>
-        {pictures.map(picture => (
-          <div className='p-[10px] relative overflow-hidden' key={picture.id}>
-            <Image src={picture.src} alt='link' width={100} height={100}  className='w-full h-auto aspect-[2.8/4]'/>
+        {product?.image.map(picture => (
+          <div className='p-[10px] relative overflow-hidden' key={picture + id}>
+          {/* // подумать над ключом */}
+            <Image src={picture} alt='link' width={100} height={100}  className='w-full h-auto aspect-[2.8/4]'/>
           </div>
         ))}
       </Slider>

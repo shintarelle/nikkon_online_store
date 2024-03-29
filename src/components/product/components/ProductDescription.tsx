@@ -6,10 +6,13 @@ import QuantityProductsBlock from './QuantityProductsBlock';
 import Button from '@/components/header/components/Button';
 
 interface ProductCardProps {
-  product: Product; // Используем интерфейс продукта в качестве типа для пропса product
+  product?: Product; // Используем интерфейс продукта в качестве типа для пропса product
 }
 
 function ProductDescription({ product }: ProductCardProps) {
+  if (!product) {
+    return <h1>Продукт не найден</h1>;
+  }
   const { vendorCode, title, price, image, category, type, discount, size } = product;
   return (
     <div className='flex flex-col gap-6 "md:max-w-[300px] lg:max-w-[400px] p-[10px]'>

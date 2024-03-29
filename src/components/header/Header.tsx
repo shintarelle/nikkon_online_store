@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { menu } from '../../../data.js';
 
 import { Tenor_Sans } from "next/font/google";
+import SearchInput from '../search/SearchInput';
+import Burger from './components/Burger';
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -15,7 +17,7 @@ const tenorSans = Tenor_Sans({
 function Header() {
   return (
     <header className=''>
-      <div className='h-6 bg-dark-grey '>
+      <div className='hidden md:block h-6 bg-dark-grey '>
         <ul className='flex justify-center gap-10 '>
           <li className=''>
             <a className='text-xs no-underline text-white leading-6 font-medium tracking-wider' href='#' target='_blank' >
@@ -29,14 +31,17 @@ function Header() {
           </li>
         </ul>
       </div>
-      <div className='h-[80px] flex justify-between gap-5'>
-        <div className='flex flex-col justify-between'>
+
+      <div className='h-[80px] flex justify-between gap-5 px-[10px] max-w-[1300px] mx-auto'>
+        <div className='hidden md:flex flex-col justify-between'>
           <a className={`text-sm no-underline text-black ${tenorSans.className}`} href='tel:+380635283957'>+380635283957</a>
           <span className={`text-xs text-light-grey ${tenorSans.className}`}> ПН-ПТ | 9:00-18:00</span>
           <Button title={'Зворотній дзвінок'} textSize={'sm'}></Button>
         </div>
-        <div className='flex justify-center align-center'>
+
+        <div className='flex justify-center items-center'>
           <Image
+            className=' w-[150px] h-[50px] md:w-[230px] md:h-[80px] '
             priority
             src={'/Logo.jpeg'}
             alt='Logo'
@@ -44,13 +49,14 @@ function Header() {
             height='80' //!!!---- change size of image
           />
         </div>
-        <ul className='flex justify-between align-center gap-6'>
+
+        <ul className='flex justify-between items-center gap-6'>
           <li className='self-center'>
-            <Image src='/search.svg' alt='search' width='20' height='20' className='w-[22px] h-[22px]'/>
+            <SearchInput />
           </li>
           <li className='self-center flex'>
             <Image src='/user.svg' alt='login' width='20' height='20' className='w-[22px] h-[22px]'/>
-            <span className='underline'>Особистий кабінет</span>
+            <span className='underline hidden ml:inline-block'>Особистий кабінет</span>
 
           </li>
           <li className='self-center'>
@@ -59,14 +65,17 @@ function Header() {
           <li className='self-center'>
             <Image src='/bag.svg' alt='busket' width='20' height='20' className='w-[22px] h-[22px]'/>
           </li>
+          {/* <li className=' md:hidden self-center bg-powder-pink p-[5px]'>
+            <Image src='/burger.svg' alt='burger menu' width='20' height='20' className='w-[22px] h-[22px]'/>
+          </li> */}
+          <Burger />
         </ul>
-
       </div>
-      <nav className='flex justify-center h-[50px]'>
+      <nav className='hidden md:flex justify-center h-[50px] max-w-[1300px] mx-auto'>
         <ul className='flex gap-0 lg:gap-7  my-0 mx-auto self-center'>
           {menu.map(item => (
           <li className='' key={item.name}>
-              <a href={item.link} className='block uppercase font-semibold text-sm no-underline text-black px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item.name}</a>
+              <a href={item.link} className='block uppercase font-semibold text-sm no-underline text-black px-[8px] ml:px-[14px] py-[5px] border-b-[5px] border-transparent hover:border-powder-pink'>{item.name}</a>
             </li>
           ))}
         </ul>

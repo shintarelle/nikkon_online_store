@@ -6,7 +6,7 @@ interface HeadingProps {
 
 function Heading({ title }: HeadingProps) {
   return (
-    <h2 className='max-w-[1240px] my-0 mx-auto uppercase text-3xl font-semibold text-center my-3'>{title}</h2>
+    <h2 className='max-w-[1240px] my-0 mx-auto uppercase text-xl md:text-3xl font-semibold text-center my-3'>{title}</h2>
   )
 }
 
