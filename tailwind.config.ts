@@ -23,6 +23,8 @@ const config: Config = {
       'powder-beige': '#ebd9d5',
       'powder-red': '#f05151',
       'light-red': '#f57876',
+      'blue': '#007bff',
+      'pink': '#ff69b4',
     },
     screens: {
       'sm': '640px',

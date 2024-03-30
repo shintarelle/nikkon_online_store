@@ -1,18 +1,27 @@
 'use client'
 import React, { useState } from 'react';
 
-function QuantityProductsBlock() {
-  const [quantity, setQuantity] = useState(1);
+interface QuantityProductsBlockProps {
+  selectedQuantity: number;
+  onChange: (quantity: number) => void;
+}
+
+function QuantityProductsBlock({ selectedQuantity, onChange }: QuantityProductsBlockProps) {
+  const [quantity, setQuantity] = useState(selectedQuantity);
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+  if (quantity > 1) {
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+    onChange(newQuantity);
+  }
+};
 
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+const increaseQuantity = () => {
+  const newQuantity = quantity + 1;
+  setQuantity(newQuantity);
+  onChange(newQuantity);
+};
 
   return (
     <div className="">

@@ -9,6 +9,7 @@ export const productsArray = [
     type: 'new',
     discount: 0,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
 
   },
   {
@@ -21,6 +22,7 @@ export const productsArray = [
     type: 'new',
     discount: 0,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ export const productsArray = [
     type: 'top',
     discount: 10,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ export const productsArray = [
     type: 'sale',
     discount: 30,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 5,
@@ -54,6 +58,7 @@ export const productsArray = [
     type: 'new',
     discount: 0,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 6,
@@ -65,6 +70,7 @@ export const productsArray = [
     type: 'new',
     discount: 0,
     size: ['S', 'M', 'L', 'Xl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 7,
@@ -76,6 +82,7 @@ export const productsArray = [
     type: 'new',
     discount: 0,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 8,
@@ -87,6 +94,7 @@ export const productsArray = [
     type: 'top',
     discount: 25,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 9,
@@ -98,6 +106,7 @@ export const productsArray = [
     type: 'top',
     discount: 10,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 10,
@@ -109,6 +118,7 @@ export const productsArray = [
     type: 'top',
     discount: 34,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 11,
@@ -120,6 +130,7 @@ export const productsArray = [
     type: 'sale',
     discount: 34,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 12,
@@ -131,6 +142,7 @@ export const productsArray = [
     type: 'sale',
     discount: 49,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
   {
     id: 13,
@@ -142,6 +154,7 @@ export const productsArray = [
     type: 'sale',
     discount: 34,
     size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    color: ['blue', 'pink', 'white', 'black'],
   },
 ]
 

@@ -1,12 +1,14 @@
-
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Button from './components/Button'
 import Image from 'next/image';
+import Link from 'next/link'
 import { menu } from '../../../data.js';
 
 import { Tenor_Sans } from "next/font/google";
 import SearchInput from '../search/SearchInput';
 import Burger from './components/Burger';
+import Modal from './components/Modal'; // Импортируем компонент модального окна
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -15,6 +17,17 @@ const tenorSans = Tenor_Sans({
 
 
 function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для открытия и закрытия модального окна
+
+  // Функция для открытия модального окна
+  const openModal = () => {
+    setIsModalOpen(true);
+  }
+
+  // Функция для закрытия модального окна
+  const closeModal = () => {
+    setIsModalOpen(false);
+  }
   return (
     <header className=''>
       <div className='hidden md:block h-6 bg-dark-grey '>
@@ -36,18 +49,20 @@ function Header() {
         <div className='hidden md:flex flex-col justify-between'>
           <a className={`text-sm no-underline text-black ${tenorSans.className}`} href='tel:+380635283957'>+380635283957</a>
           <span className={`text-xs text-light-grey ${tenorSans.className}`}> ПН-ПТ | 9:00-18:00</span>
-          <Button title={'Зворотній дзвінок'} textSize={'sm'}></Button>
+          <Button title={'Зворотній дзвінок'} textSize={'sm'} onClick={openModal}/> {/* Добавляем onClick для открытия модального окна */}
         </div>
 
         <div className='flex justify-center items-center'>
-          <Image
-            className=' w-[150px] h-[50px] md:w-[230px] md:h-[80px] '
-            priority
-            src={'/Logo.jpeg'}
-            alt='Logo'
-            width='230' //!!!!!!!!!!!!!!!!!!
-            height='80' //!!!---- change size of image
-          />
+          <Link href={`/`}>
+            <Image
+              className=' w-[150px] h-[50px] md:w-[230px] md:h-[80px] '
+              priority
+              src={'/Logo.jpeg'}
+              alt='Logo'
+              width='230' //!!!!!!!!!!!!!!!!!!
+              height='80' //!!!---- change size of image
+            />
+          </Link>
         </div>
 
         <ul className='flex justify-between items-center gap-6'>
@@ -80,6 +95,8 @@ function Header() {
           ))}
         </ul>
       </nav>
+          {/* Передаем состояние открытия модального окна и функцию для закрытия */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
     </header>
   )
 }

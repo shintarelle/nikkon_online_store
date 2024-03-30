@@ -1,4 +1,4 @@
-import CustomProductSlider from "@/components/product/components/CustomProductSlider";
+import CustomProductSlider from "@/components/product/CustomProductSlider";
 import ProductDescription from "@/components/product/components/ProductDescription";
 import { productsArray } from '../../../data.js'
 
