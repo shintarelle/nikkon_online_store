@@ -10,4 +10,7 @@ export default interface Product {
   discount?: number; //скидка
   size: string[],
   color: string[]; // Массив строк с названиями цветов
+  selectedSize?: string; // Добавлено
+  selectedColor?: string; // Добавлено
+  quantity?: number; // Добавлено
 }

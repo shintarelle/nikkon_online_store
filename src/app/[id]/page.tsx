@@ -12,7 +12,11 @@ export default function Page({ params }: { params: { id: string } }) {
         <div className='  md:flex md:gap-4 md:justify-center lg:gap-7'>
           <CustomProductSlider id={identificator} />
           <div className="md:max-w-[300px] lg:max-w-[400px] p-[10px]">
-            <ProductDescription product={product} />
+            {product ? (
+              <ProductDescription product={product} />
+            ) : (
+              <p>Товар не найден</p>
+            )}
           </div>
         </div>
       </div>

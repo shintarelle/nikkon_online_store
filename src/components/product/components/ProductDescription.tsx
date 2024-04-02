@@ -1,10 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Product from '../../../app/types'
 import SizeRadiogroup from './SizeRadiogroup';
 import QuantityProductsBlock from './QuantityProductsBlock';
 import Button from '@/components/header/components/Button';
 import ColorRadiogroup from './ColorRadioGroup';
+import { BasketContext } from '@/app/BasketContext';
+
 
 interface ProductCardProps {
   product: Product; // Используем интерфейс продукта в качестве типа для пропса product
@@ -12,11 +14,12 @@ interface ProductCardProps {
 
 function ProductDescription({ product }: ProductCardProps) {
 
-  const { vendorCode, title, price, image, category, type, discount, size, color } = product;
+  const { id, vendorCode, title, price, image, category, type, discount, size, color } = product;
 
-  const [selectedSize, setSelectedSize] = useState(size[0]);
-  const [selectedColor, setSelectedColor] = useState(color[0]);
-  const [quantity, setQuantity] = useState(1);
+  const [currentSelectedSize, setSelectedSize] = useState(size[0]);
+  const [currentSelectedColor, setSelectedColor] = useState(color[0]);
+  const [currentQuantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(BasketContext)
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
@@ -30,13 +33,10 @@ function ProductDescription({ product }: ProductCardProps) {
     setQuantity(quantity);
   };
 
+
   const handleAddToCart = () => {
-    if (!selectedSize || !selectedColor || !quantity) {
-      console.error('Please select size, color, and quantity');
-      return <h1 className='text-powder-red'>Please select size, color, and quantity</h1>;
-    }
-    // Собираем все данные о продукте
-    const selectedProduct = {
+    const cartData: Product = {
+      id,
       vendorCode,
       title,
       price,
@@ -44,18 +44,18 @@ function ProductDescription({ product }: ProductCardProps) {
       category,
       type,
       discount,
-      selectedSize,
-      selectedColor,
-      quantity,
+      size,
+      color,
+      selectedSize: currentSelectedSize,
+      selectedColor: currentSelectedColor,
+      quantity: currentQuantity,
     };
-    console.log(selectedProduct);
-    // Передаем данные в компонент корзины или обработчик добавления в корзину
-    // Например, передаем их через пропсы в компонент корзины
-    // <CartComponent product={selectedProduct} />
+    addToCart(cartData);
+    setSelectedSize(size[0]);
+    setSelectedColor(color[0]);
+    setQuantity(1);
+    console.log(cartData)
   };
-  // if (!product) {
-  //   return <h1>Продукт не найден</h1>;
-  // }
 
   return (
     <div className='flex flex-col gap-6 "md:max-w-[300px] lg:max-w-[400px] p-[10px]'>
@@ -69,17 +69,13 @@ function ProductDescription({ product }: ProductCardProps) {
       </div>
       <p className='text-light-grey'>{`articul:  ${vendorCode}`}</p>
 
-      <SizeRadiogroup group={size} size={selectedSize} onChange={handleSizeChange} />
-      <ColorRadiogroup group={color} color={selectedColor} onChange={handleColorChange} />
-      <QuantityProductsBlock selectedQuantity={quantity} onChange={handleQuantityChange} />
+      <SizeRadiogroup group={size} size={currentSelectedSize} onChange={handleSizeChange} />
+      <ColorRadiogroup group={color} color={currentSelectedColor} onChange={handleColorChange} />
+      <QuantityProductsBlock selectedQuantity={currentQuantity} onChange={handleQuantityChange} />
       <Button title={'Додати до кошика'} textSize='14' onClick={handleAddToCart} />
-
-      {(!selectedSize || !selectedColor || !quantity) ?
-      <h1 className='text-powder-red'>Please select size, color, and quantity</h1>
-        : null}
 
     </div>
   )
 }
 
-export default ProductDescription
+  export default ProductDescription;
