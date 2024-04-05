@@ -2,8 +2,6 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FormData } from '../../../app/checkout/page';
-import Button from '@/components/header/components/Button';
-
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required('Обязательное поле'),
@@ -25,7 +23,7 @@ const FormWithValidation = ({initialValues, handleForm1Submit, handleStepClick }
   const handleSubmit = (values: FormData) => {
     handleForm1Submit(values)
     handleStepClick(2)
-    console.log('data for delivery 1: ', values);
+    console.log('contact info: ', values);
   };
 
 
@@ -61,7 +59,6 @@ const FormWithValidation = ({initialValues, handleForm1Submit, handleStepClick }
           <Field type="email" id="email" name="email" className="form-input mt-1 block w-full p-1 border border-light-grey" />
           <ErrorMessage name="email" component="div" className="text-powder-red" />
         </div>
-        {/* <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded" >Отправить</button> */}
 
         <div className='flex justify-end p-[20px]'>
           <button type="submit" className='bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-dark-grey focus:text-white'>Далі</button>

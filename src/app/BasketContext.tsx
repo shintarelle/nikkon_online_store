@@ -30,18 +30,15 @@ useEffect(() => {
 
   // Сохранение корзины в Local Storage при изменении
   useEffect(() => {
-    // console.log('record', cartItems);
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (selectedProduct: Product) => {
     let existingItemIndex: number = cartItems.findIndex(item => item.id === selectedProduct.id && item.selectedColor === selectedProduct.selectedColor && item.selectedSize === selectedProduct.selectedSize);
 
-    console.log(existingItemIndex);
     const updatedCartItems = [...cartItems];
 
     if (existingItemIndex !== -1 && updatedCartItems[existingItemIndex].quantity && selectedProduct.quantity) {
-      console.log(updatedCartItems);
         updatedCartItems[existingItemIndex].quantity += selectedProduct.quantity;
         setCartItems(updatedCartItems);
     } else {
@@ -56,7 +53,7 @@ useEffect(() => {
   const clearAll = () => {
     setCartItems([]);
   };
-  console.log("Cart items:", cartItems);
+  console.log("Basket items:", cartItems);
 
   return (
     <BasketContext.Provider value={{ cartItems, addToCart, deleteItemById, clearAll }}>

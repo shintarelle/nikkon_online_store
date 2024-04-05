@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/header/components/Button';
 import BasketCard from '../../components/basket/components/BasketCard';
 import  FormWithValidation  from '../../components/basket/components/FormWithValidation';
-import DeliveryForm1 from '@/components/basket/components/DeliveryForm1';
+import DeliveryForm from '@/components/basket/components/DeliveryForm';
 
 export interface FormData {
   firstName: string;
@@ -42,7 +42,6 @@ const Checkout = () => {
   const router = useRouter();
 
   const handleForm1Submit = (data: FormData) => {
-    console.log('in handleForm1Submit', data)
     setFormData(data);
   };
 
@@ -71,6 +70,7 @@ const Checkout = () => {
       postOffice: '',
     });
     clearAll()
+    handleClicktoHomePage()
   };
 
   const handleClicktoHomePage = () => {
@@ -125,7 +125,7 @@ const Checkout = () => {
               {step === 2 && (
             <div className='flex flex-col justify-between gap-5'>
               <h1 className='text-3xl uppercase'>Доставка</h1>
-              <DeliveryForm1 initialValues={formDeliveryData} handleForm2Submit={handleForm2Submit} handleStepClick={handleStepClick}/>
+              <DeliveryForm initialValues={formDeliveryData} handleForm2Submit={handleForm2Submit} handleStepClick={handleStepClick}/>
             </div>
               )}
               {step === 3 && (

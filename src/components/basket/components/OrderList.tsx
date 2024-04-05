@@ -7,17 +7,22 @@ interface OrderListProps {
 }
 
 function OrderList({ hidden }: OrderListProps) {
-  const { cartItems } = useContext(BasketContext)
+  const { cartItems, deleteItemById } = useContext(BasketContext)
+
+  const handleDeleteItemClick = (itemId: string) => {
+    deleteItemById(itemId);
+  };
+
   return (
   <>
     { cartItems.length ? cartItems.map((item) => (
       <div key={item.id} className='relative'>
-        <div className={`absolute right-0 top-0 ${hidden ? 'hidden' : '' }`}>x</div>
+        <div className={`absolute right-0 bottom-2 p-2 bg-powder-pink ${hidden ? 'hidden' : '' }`} onClick={() => handleDeleteItemClick(item.id)}>Віддалити</div>
           <div className='flex gap-3'>
             <div className='w-[100px] h-auto'>
               <Image src={item.image[0]} alt='product' width={100} height={100} className='min-w-[100px] h-auto'/>
             </div>
-            <div className='shrink'>
+            <div className='shrink mr-[10px]'>
               <h4 className='text-md font-bold mb-[10px]'>{item.title}</h4>
               <div>
                 <span className='text-sm'>Размер: </span><span className='text-sm'>{item.selectedSize}</span>
