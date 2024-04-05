@@ -4,6 +4,7 @@ import { Raleway} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import { BasketProvider } from "./BasketContext";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={raleway.className}>
-      <Header />
-        <main>{children}</main>
-        <Footer />
+        <BasketProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </BasketProvider>
       </body>
     </html>
   );

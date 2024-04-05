@@ -1,19 +1,67 @@
-import React from 'react'
-
-import Product from '../../../app/types'
+'use client'
+import React, { useState, useContext } from 'react'
+import  Product  from '../../../app/types'
 import SizeRadiogroup from './SizeRadiogroup';
 import QuantityProductsBlock from './QuantityProductsBlock';
 import Button from '@/components/header/components/Button';
+import ColorRadiogroup from './ColorRadioGroup';
+import { BasketContext } from '@/app/BasketContext';
+
 
 interface ProductCardProps {
-  product?: Product; // Используем интерфейс продукта в качестве типа для пропса product
+  product: Product; // Используем интерфейс продукта в качестве типа для пропса product
 }
 
 function ProductDescription({ product }: ProductCardProps) {
-  if (!product) {
-    return <h1>Продукт не найден</h1>;
-  }
-  const { vendorCode, title, price, image, category, type, discount, size } = product;
+
+  const { id, vendorCode, title, price, image, category, type, discount, size, color } = product;
+
+  const [currentSelectedSize, setSelectedSize] = useState(size[0]);
+  const [currentSelectedColor, setSelectedColor] = useState(color[0]);
+  const [currentQuantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(BasketContext)
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleSizeChange = (size: string) => {
+    setSelectedSize(size);
+  };
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
+
+  const handleQuantityChange = (quantity: number) => {
+    setQuantity(quantity);
+  };
+
+
+  const handleAddToCart = () => {
+    const cartData: Product = {
+      id: `${id}-${currentSelectedSize}-${currentSelectedColor}`,
+      vendorCode,
+      title,
+      price,
+      image,
+      category,
+      type,
+      discount,
+      size,
+      color,
+      selectedSize: currentSelectedSize,
+      selectedColor: currentSelectedColor,
+      quantity: currentQuantity,
+    };
+    addToCart(cartData);
+    setSelectedSize(size[0]);
+    setSelectedColor(color[0]);
+    setQuantity(1);
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    },3000)
+    console.log(cartData)
+  };
+
   return (
     <div className='flex flex-col gap-6 "md:max-w-[300px] lg:max-w-[400px] p-[10px]'>
       <h1>{title}</h1>
@@ -26,11 +74,18 @@ function ProductDescription({ product }: ProductCardProps) {
       </div>
       <p className='text-light-grey'>{`articul:  ${vendorCode}`}</p>
 
-      <SizeRadiogroup group={size} />
-      <QuantityProductsBlock />
-      <Button title={ 'Додати до кошика'} textSize='14'/>
+      <SizeRadiogroup group={size} size={currentSelectedSize} onChange={handleSizeChange} />
+      <ColorRadiogroup group={color} color={currentSelectedColor} onChange={handleColorChange} />
+      <QuantityProductsBlock selectedQuantity={currentQuantity} onChange={handleQuantityChange} />
+      <Button title={'Додати до кошика'} textSize='14' onClick={handleAddToCart} />
+      {showMessage &&
+        <div className='' >
+          <p className='text-sm text-powder-red'>Товар успішно додан до кошика!</p>
+        </div>
+      }
+
     </div>
   )
 }
 
-export default ProductDescription
+  export default ProductDescription;

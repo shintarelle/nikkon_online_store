@@ -3,13 +3,16 @@ import React, { useState } from 'react'
 
 interface SizeRadiogrupProps {
   group: string[];
+  size: string;
+  onChange: (size: string) => void;
 }
 
-function SizeRadiogroup({ group }: SizeRadiogrupProps) {
-  const [selectedSize, setSelectedSize] = useState('');
+function SizeRadiogroup({ group, size, onChange}: SizeRadiogrupProps) {
+  const [selectedSize, setSelectedSize] = useState(size);
 
   const handleSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedSize(e.target.value);
+    onChange(e.target.value)
   };
 
   return (
@@ -27,7 +30,7 @@ function SizeRadiogroup({ group }: SizeRadiogrupProps) {
             onChange={handleSizeChange}
           />
           <div className={`w-9 h-9 border border-light-grey flex items-center justify-center ${
-              selectedSize === size ? 'border-black border-2' : 'border-light-grey'
+              selectedSize === size ? 'border-powder-red border-2' : ''
             }`}>
             <span className={`text-[9px] text-light-grey ${
               selectedSize === size ? 'text-dark-grey' : 'text-light-grey'

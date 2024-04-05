@@ -2,7 +2,8 @@ import React from 'react'
 import Image from 'next/image';
 import { menu } from '../../../data.js';
 import { Tenor_Sans } from "next/font/google";
-import Button from '../header/components/Button.jsx';
+import Button from '../header/components/Button';
+import Link from 'next/link';
 
 const tenorSans = Tenor_Sans({
   subsets: ["latin"],
@@ -14,16 +15,18 @@ function Footer() {
     <>
       <div className='bg-dark-grey w-full h-[30px]'>Footer</div>
 
-      <div className='bg-white w-full h-[200px] flex justify-between max-w-[1300px] mx-auto' >
+      <div className='bg-white w-full h-[200px] flex justify-between max-w-[1300px] mx-auto px-[10px]' >
         <div className='flex justify-center items-center'>
-          <Image
-            className=' w-[150px] h-[50px] md:w-[230px] md:h-[80px] '
-            priority
-            src={'/Logo.jpeg'}
-            alt='Logo'
-            width='230' //!!!!!!!!!!!!!!!!!!
-            height='80' //!!!---- change size of image
-          />
+          <Link href={`/`}>
+            <Image
+              className=' w-[150px] h-[50px] md:w-[230px] md:h-[80px] '
+              priority
+              src={'/Logo.jpeg'}
+              alt='Logo'
+              width='230' //!!!!!!!!!!!!!!!!!!
+              height='80' //!!!---- change size of image
+            />
+          </Link>
         </div>
         <ul className='flex justify-between align-center gap-6'>
           <li className='self-center'>
