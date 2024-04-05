@@ -38,8 +38,11 @@ useEffect(() => {
 
     const updatedCartItems = [...cartItems];
 
-    if (existingItemIndex !== -1 && updatedCartItems[existingItemIndex].quantity && selectedProduct.quantity) {
-        updatedCartItems[existingItemIndex].quantity += selectedProduct.quantity;
+    if (existingItemIndex !== -1 && updatedCartItems[existingItemIndex]?.quantity && selectedProduct?.quantity) {
+      const existingQuantity = updatedCartItems[existingItemIndex]?.quantity || 0;
+      const newQuantity = existingQuantity + (selectedProduct?.quantity || 0);
+      updatedCartItems[existingItemIndex].quantity = newQuantity;
+
         setCartItems(updatedCartItems);
     } else {
         setCartItems(prevCartItems => [...prevCartItems, selectedProduct]);

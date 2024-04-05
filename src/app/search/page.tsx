@@ -1,6 +1,6 @@
 'use client'
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { productsArray } from '../../../data.js';
 import Product from '../types.js';
 import ProductCard from '@/components/products/components/ProductCard';
@@ -19,10 +19,11 @@ export default function SearchPage() {
       );
       setFilteredProducts(filteredProducts);
     }
-  }, [searchParams]);
+  }, [searchParams, lowercaseSearchValue]);
 
   return (
     <>
+      <Suspense fallback={<div>Loading...</div>}>
       <div className=" max-w-[350px] sm:max-w-[650px] md:max-w-[924px] lg:max-w-[1024px] px-[20px] sm:p-[10px] my-0 mx-auto ">
       <h1 className='text-xl'>{`Результати пошуку за запитом ${searchValue}`}</h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  pt-7 pb-[75px]' >
@@ -31,8 +32,9 @@ export default function SearchPage() {
             < ProductCard  product={product} />
           </div>)
           )}
-      </div>
-    </div>
+        </div>
+        </div>
+      </Suspense>
     </>
   );
 }

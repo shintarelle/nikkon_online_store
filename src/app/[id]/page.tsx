@@ -3,7 +3,7 @@ import ProductDescription from "@/components/product/components/ProductDescripti
 import { productsArray } from '../../../data.js'
 
 export default function Page({ params }: { params: { id: string } }) {
-  const identificator = Number(params.id)
+  const identificator = params.id
   const product = productsArray.find(product => product.id === identificator)
 
   return (

@@ -9,7 +9,7 @@ import { productsArray } from '../../../data.js'
 
 
 interface CustomProductSliderProps {
-  id: number;
+  id: string;
 }
 const CustomProductSlider = ({ id }: CustomProductSliderProps) => {
   const product = productsArray.find(product => product.id === id)
