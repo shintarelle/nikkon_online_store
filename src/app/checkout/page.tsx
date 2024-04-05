@@ -1,97 +1,148 @@
 'use client'
+
 import React, { useState, useEffect, useContext } from 'react';
-import Heading from '@/components/products/components/Heading'
-import { BasketContext } from '../BasketContext'
-import { useRouter } from 'next/navigation'
-import Button from '@/components/header/components/Button'
-import Image from 'next/image'
+import Heading from '@/components/products/components/Heading';
+import { BasketContext } from '../BasketContext';
+import { useRouter } from 'next/navigation';
+import Button from '@/components/header/components/Button';
+import BasketCard from '../../components/basket/components/BasketCard';
+import  FormWithValidation  from '../../components/basket/components/FormWithValidation';
+import DeliveryForm1 from '@/components/basket/components/DeliveryForm1';
+
+export interface FormData {
+  firstName: string;
+  lastName: string;
+  patronymic: string;
+  phone: string;
+  email: string;
+}
+export interface FormDeliveryData {
+  region: string;
+  city: string;
+  postOffice: string;
+}
 
 const Checkout = () => {
   const [step, setStep] = useState(1); // Текущий шаг оформления заказа
-  const { cartItems } = useContext(BasketContext)
-  const router = useRouter()
-  console.log(cartItems)
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '',
+    lastName: '',
+    patronymic: '',
+    phone: '',
+    email: '',
+  });
 
-  const handleClicktoHomePage = () => {
-    router.push('/')
-  }
+  const [formDeliveryData, setFormDeliveryData] = useState<FormDeliveryData>({
+    region: '',
+    city: '',
+    postOffice: '',
+  });
 
-  // Обработчик изменения хэша в URL
-  const handleHashChange = () => {
-    const hashStep = parseInt(window.location.hash.replace('#step_', ''), 10);
-    if (!isNaN(hashStep) && hashStep !== step) {
-      setStep(hashStep);
-    }
+  const { cartItems, clearAll } = useContext(BasketContext);
+  const router = useRouter();
+
+  const handleForm1Submit = (data: FormData) => {
+    console.log('in handleForm1Submit', data)
+    setFormData(data);
   };
 
-  useEffect(() => {
-    // Подписываемся на событие изменения хэша в URL
-    window.addEventListener('hashchange', handleHashChange);
-    return () => {
-      // Отписываемся от события при размонтировании компонента
-      window.removeEventListener('hashchange', handleHashChange);
+  const handleForm2Submit = (data: FormDeliveryData) => {
+    setFormDeliveryData(data);
+  };
+
+  const handleSubmit = () => {
+    // обьединяем данные с двух форм в один обьект
+    const mergedData = {
+      order: [...cartItems],
+      ...formData,
+      ...formDeliveryData,
     };
-  }, [step]); // Слушаем изменения шага оформления заказа
+    console.log('Merged data:', mergedData);
+    setFormData({
+      firstName: '',
+      lastName: '',
+      patronymic: '',
+      phone: '',
+      email: '',
+    });
+    setFormDeliveryData({
+      region: '',
+      city: '',
+      postOffice: '',
+    });
+    clearAll()
+  };
 
-  // Обработчик для перехода к следующему шагу
-  const nextStep = () => {
-  setStep((prevStep) => {
-    const nextStep = prevStep + 1;
-    window.location.hash = `step_${nextStep}`;
-    return nextStep;
-  });
-};
+  const handleClicktoHomePage = () => {
+    router.push('/');
+  };
 
-  // Обработчик для перехода к предыдущему шагу
-  const prevStep = () => {
-  setStep((prevStep) => {
-    const nextStep = prevStep - 1;
-    window.location.hash = `step_${nextStep}`;
-    return nextStep;
-  });
-};
+  // Обработчик для переключения шагов по клику на черту
+  const handleStepClick = (newStep: number) => {
+    setStep(newStep);
+    window.location.hash = `step_${newStep}`;
+  };
 
   return (
     <>
-
-    {!cartItems.length ? (
-    <div className='h-screen max-w-[1024px] mx-auto flex justify-between'>
-      <p className='mb-[50px]'>Ваша корзина пуста</p>
-      <div className='pt-[100px]'>
-        <Button title={'Продолжить'} textSize={'md'} onClick={handleClicktoHomePage} />
-      </div>
-  </div>
-) : (
-  <div>
-    <Heading title={'Оформление заказа'} />
-    {step === 1 && (
-      <>
-        <h1>Шаг 1: Введите контактные данные</h1>
-                <div className='w-[378px] h-[584px] bg-light-grey p-[20px]'>
-                  <div className='flex '>
-                    <div className='w-[96px] h-[134px]'>
-                      <Image src='/product1.jpeg' alt='product' width={100} height={100} className='w-full h-full'/>
-                    </div>
-                  </div>
+      {!cartItems.length ? (
+        <div className='h-screen max-w-[1024px] mx-auto flex justify-between'>
+          <p className='mb-[50px]'>Ваша корзина пуста</p>
+          <div className='pt-[100px]'>
+            <Button title={'Продолжить'} textSize={'md'} onClick={handleClicktoHomePage} />
+          </div>
         </div>
+      ) : (
+        <div>
+            <Heading title={'Оформление заказа'} />
+            <div className='flex justify-between gap-7 p-[30px] '>
 
-        {/* Форма для ввода контактных данных */}
-        <button onClick={nextStep}>Далее</button>
-      </>
-    )}
-    {step === 2 && (
-      <>
-        <h1>Шаг 2: Введите адрес доставки</h1>
-        {/* Форма для ввода адреса доставки */}
-        <button onClick={prevStep}>Назад</button>
-        <button onClick={nextStep}>Далее</button>
-      </>
-    )}
-    {/* Другие шаги оформления заказа */}
-  </div>
-)}
+              <div className='flex flex-col gap-5 grow'>
+                <div className='flex items-center'>
+                  <div className={`cursor-pointer text-xl  ${step === 1 ? 'font-bold text-black' : 'text-gray-500'}`} onClick={() => handleStepClick(1)}>
+                    1
+                  </div>
+                  <div className={`mx-2 w-1/3 h-[5px]  ${step == 1 ? 'bg-black' : 'bg-light-grey'}`} onClick={() => handleStepClick(1)}>
+                  </div>
+                  <div className={`cursor-pointer text-xl  ${step === 2 ? 'font-bold text-black' : 'text-gray-500'}`} onClick={() => handleStepClick(2)}>
+                    2
+                  </div>
+                  <div className={`mx-2 w-1/3 h-[5px] ${step == 2 ? 'bg-black' : 'bg-light-grey'}`} onClick={() => handleStepClick(2)}>
+                  </div>
+                  <div className={`cursor-pointer text-xl  ${step === 3 ? 'font-bold text-black' : 'text-gray-500'}`} onClick={() => handleStepClick(3)}>
+                    3
+                  </div>
+                  <div className={`mx-2 w-1/3 h-[5px] ${step == 3 ? 'bg-black' : 'bg-light-grey'}`} onClick={() => handleStepClick(3)}>
+                  </div>
+                </div>
 
+              {step === 1 && (
+              <div className='flex flex-col justify-between gap-5'>
+              <h1 className='text-3xl uppercase'>Контактная інформація</h1>
+                    <FormWithValidation initialValues={formData} handleForm1Submit={handleForm1Submit} handleStepClick={handleStepClick} />
+              </div>
+              )}
+              {step === 2 && (
+            <div className='flex flex-col justify-between gap-5'>
+              <h1 className='text-3xl uppercase'>Доставка</h1>
+              <DeliveryForm1 initialValues={formDeliveryData} handleForm2Submit={handleForm2Submit} handleStepClick={handleStepClick}/>
+            </div>
+              )}
+              {step === 3 && (
+            <div className='flex flex-col justify-between gap-5'>
+              <h1 className='text-3xl uppercase'>Вже почти все</h1>
 
+              <div className='flex justify-between p-[20px]'>
+                <Button onClick={() => handleStepClick(2)} title={'Назад'} textSize={'md'}/>
+                <Button onClick={() => handleSubmit()} title={'Підтверджую замовлення'} textSize={'md'}/>
+              </div>
+            </div>
+              )}
+              </div>
+                <BasketCard />
+            </div>
+        </div>
+      )}
     </>
   );
 };

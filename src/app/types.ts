@@ -1,6 +1,6 @@
 // Определяем интерфейс для продукта
 export default interface Product {
-  id: number;
+  id: string;
   vendorCode: number; //код товара
   title: string;
   price: number;
