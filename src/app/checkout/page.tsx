@@ -95,7 +95,7 @@ const Checkout = () => {
       ) : (
         <div>
             <Heading title={'Оформление заказа'} />
-            <div className='flex justify-between gap-7 p-[30px] '>
+            <div className='flex flex-col md:flex-row justify-between gap-7 p-[30px] '>
 
               <div className='flex flex-col gap-5 grow'>
                 <div className='flex items-center'>
@@ -118,7 +118,7 @@ const Checkout = () => {
 
               {step === 1 && (
               <div className='flex flex-col justify-between gap-5'>
-              <h1 className='text-3xl uppercase'>Контактная інформація</h1>
+              <h1 className=' md:text-3xl uppercase'>Контактна інформація</h1>
                     <FormWithValidation initialValues={formData} handleForm1Submit={handleForm1Submit} handleStepClick={handleStepClick} />
               </div>
               )}

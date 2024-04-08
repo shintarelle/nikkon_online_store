@@ -52,7 +52,7 @@ export const productsArray = [
     id: '5',
     title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 800,
-    image: ['/product5.jpeg','/product5.jpeg', '/product5.jpeg'],
+    image: ['/product4.jpeg','/product4.jpeg', '/product4.jpeg'],
     vendorCode: 20005,
     category: 'homesuits',
     type: 'new',

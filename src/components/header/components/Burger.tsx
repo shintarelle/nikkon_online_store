@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Button from './Button';
 import { Tenor_Sans } from 'next/font/google';
@@ -24,8 +25,15 @@ const BurgerMenu = () => {
         <Image  src='/burger.svg' alt='burger menu' width='20' height='20' className='w-[22px] h-[22px]'/>
       </button>
     </li>
-
-    <div className={`fixed left-0 top-0 h-screen w-64 bg-dark-grey z-50 ${isOpen ? 'block' : 'hidden'}`}>
+    <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ type: 'tween', duration: 0.7 }}
+            className='fixed left-0 top-0 h-screen w-64 bg-dark-grey z-50'
+          >
       <div className='flex justify-between items-center p-4'>
         <div>
           <a href='#' className={`text-sm no-underline text-light-grey leading-6 font-medium tracking-wider ${tenorSans.className}`}>
@@ -54,7 +62,9 @@ const BurgerMenu = () => {
           </li>
         ))}
       </ul>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       </>
   );
 };
