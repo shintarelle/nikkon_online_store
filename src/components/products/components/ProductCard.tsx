@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image';
 import Button from '@/components/header/components/Button';
@@ -15,7 +16,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const pathname = usePathname() //получаем путь
   const router = useRouter()
   const { id, vendorCode, title, price, image, category, type, discount } = product; // Деструктурируем свойства продукта
+  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
+  const handleHover = () => {
+    setIsHovered(!isHovered);
+  };
+
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
   const handleBuy = () => {
     router.push(`/${id}`);
   };
@@ -42,7 +52,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className='w-full flex justify-between hidden product-btn p-[10px] pt-4  absolute -bottom-[66px] left-0 z-9 bg-white'>
           <Button title="Купити" textSize='base' onClick={handleBuy} />
-          <Image src='/heart-solid.svg' alt='wishlist' width='20' height='20' className='w-[22px] h-[22px]'/>
+          <Image
+            src={isClicked ? '/heart-solid.svg' : '/heart.svg'}
+            alt='wishlist'
+            width='20'
+            height='20'
+            className='w-[22px] h-[22px] '
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+            onClick={handleClick}/>
         </div>
       </div>
       </div>

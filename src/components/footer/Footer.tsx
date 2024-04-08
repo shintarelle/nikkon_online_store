@@ -34,7 +34,7 @@ function Footer() {
           </li>
           <li className='self-center flex'>
             <Image src='/user.svg' alt='login' width='20' height='20' className='w-[22px] h-[22px]'/>
-            <span className='underline'>Особистий кабінет</span>
+            <span className='underline hidden ml:inline-block'>Особистий кабінет</span>
 
           </li>
           <li className='self-center'>

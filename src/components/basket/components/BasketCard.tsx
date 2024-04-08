@@ -28,10 +28,9 @@ function BasketCard() {
   };
 
   return (
-    <div className='w-[378px]  bg-white-grey p-[15px]'>
-      <div className='h-[380px] overflow-scroll relative'>
+    <div className='md:max-w-[378px]  bg-white-grey p-[15px]'>
+      <div className='max-h-[380px] overflow-scroll relative'>
         <OrderList hidden={true} />
-        <button onClick={handleCloseModal}>Close</button>
       </div>
 
       <div className="grid grid-cols-2 grid-rows-3 gap-4 my-[15px]">

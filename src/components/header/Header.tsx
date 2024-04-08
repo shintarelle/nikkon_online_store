@@ -99,9 +99,6 @@ function Header() {
               ) : null}
             </button>
           </li>
-          {/* <li className=' md:hidden self-center bg-powder-pink p-[5px]'>
-            <Image src='/burger.svg' alt='burger menu' width='20' height='20' className='w-[22px] h-[22px]'/>
-          </li> */}
           <Burger />
         </ul>
       </div>
