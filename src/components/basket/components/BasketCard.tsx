@@ -51,10 +51,10 @@ function BasketCard() {
       </div>
 
       {isModalOpen && (
-          <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
-            <div className='bg-white p-6 relative'>
+          <div className='absolute md:fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center'>
+            <div className='bg-white p-6 relative  md:mx-10 md:my-10'>
               <OrderList hidden={false} />
-              <button className='absolute w-[20px] h-[20px] text-xl text-white top-[-30px] right-[-30px]' onClick={handleCloseModal}>X</button>
+              <button className='absolute w-[20px] h-[20px] text-xl md:text-white top-[10px] right-[10px] md:top-[-30px] md:right-[-30px]' onClick={handleCloseModal}>X</button>
             </div>
           </div>
         )}
