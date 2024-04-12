@@ -58,7 +58,7 @@ const handleMaxPriceChange = (value: string) => {
 
   return (
     <div className=' bg-powder-pink p-[10px] mt-8'>
-      <div className='flex justify-between max-w-[1024px] mx-auto'>
+      <div className='flex justify-between max-w-[1024px] mx-auto gap-5 flex-wrap'>
 
       <div className=''>
         <h2 className='text-xl font-bold'>Ціна</h2>
