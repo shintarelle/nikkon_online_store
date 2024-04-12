@@ -9,8 +9,6 @@ export default function Homesuits() {
     <>
       <Heading title={'Домашні костюми'} />
       <Category category={"homesuits"} />
-      {/* контент */}
-      {/* пагинация */}
       {/* описание */}
     </>
   );
