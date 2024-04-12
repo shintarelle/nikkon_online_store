@@ -1,3 +1,10 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next"],
+  "plugins": ["json"],
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "processor": "json"
+    }
+  ]
 }

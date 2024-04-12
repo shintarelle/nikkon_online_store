@@ -1,7 +1,8 @@
 export const productsArray = [
   {
     id: '1',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 599,
     image: ['/product2.jpeg', '/product2.jpeg', '/product2.jpeg'],
     vendorCode: 20001,
@@ -10,13 +11,12 @@ export const productsArray = [
     discount: 0,
     size: ['S', 'M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
-
   },
   {
     id: '2',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 999,
-    image: ['/product1.jpeg','/product1.jpeg', '/product1.jpeg'],
+    image: ['/product1.jpeg', '/product1.jpeg', '/product1.jpeg'],
     vendorCode: 20002,
     category: 'pajamas',
     type: 'new',
@@ -26,7 +26,8 @@ export const productsArray = [
   },
   {
     id: '3',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 599,
     image: ['/product2.jpeg', '/product2.jpeg', '/product2.jpeg'],
     vendorCode: 20003,
@@ -40,7 +41,7 @@ export const productsArray = [
     id: '4',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 999,
-    image: ['/product1.jpeg','/product1.jpeg', '/product1.jpeg'],
+    image: ['/product1.jpeg', '/product1.jpeg', '/product1.jpeg'],
     vendorCode: 20004,
     category: 'nightshirts',
     type: 'sale',
@@ -50,9 +51,10 @@ export const productsArray = [
   },
   {
     id: '5',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 800,
-    image: ['/product4.jpeg','/product4.jpeg', '/product4.jpeg'],
+    image: ['/product4.jpeg', '/product4.jpeg', '/product4.jpeg'],
     vendorCode: 20005,
     category: 'homesuits',
     type: 'new',
@@ -64,7 +66,7 @@ export const productsArray = [
     id: '6',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 800,
-    image: ['/product1.jpeg','/product1.jpeg', '/product1.jpeg'],
+    image: ['/product1.jpeg', '/product1.jpeg', '/product1.jpeg'],
     vendorCode: 20006,
     category: 'robes',
     type: 'new',
@@ -76,7 +78,7 @@ export const productsArray = [
     id: '7',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 999,
-    image: ['/product1.jpeg','/product1.jpeg', '/product1.jpeg'],
+    image: ['/product1.jpeg', '/product1.jpeg', '/product1.jpeg'],
     vendorCode: 20007,
     category: 'robes',
     type: 'new',
@@ -86,7 +88,8 @@ export const productsArray = [
   },
   {
     id: '8',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 599,
     image: ['/product2.jpeg', '/product2.jpeg', '/product2.jpeg'],
     vendorCode: 20008,
@@ -98,7 +101,8 @@ export const productsArray = [
   },
   {
     id: '9',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 599,
     image: ['/product2.jpeg', '/product2.jpeg', '/product2.jpeg'],
     vendorCode: 20009,
@@ -110,7 +114,8 @@ export const productsArray = [
   },
   {
     id: '10',
-    title: 'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
+    title:
+      'Бавовняна футболка з написом "Кохай. Цілуй. Обіймай." T-shirt print 4802/60 black/feeling (чорний)',
     price: 599,
     image: ['/product2.jpeg', '/product2.jpeg', '/product2.jpeg'],
     vendorCode: 20010,
@@ -124,7 +129,7 @@ export const productsArray = [
     id: '11',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 500,
-    image: ['/product4.jpeg','/product4.jpeg', '/product4.jpeg'],
+    image: ['/product4.jpeg', '/product4.jpeg', '/product4.jpeg'],
     vendorCode: 20011,
     category: 'homesuits',
     type: 'sale',
@@ -136,7 +141,7 @@ export const productsArray = [
     id: '12',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 899,
-    image: ['/product3.jpeg','/product3.jpeg', '/product3.jpeg'],
+    image: ['/product3.jpeg', '/product3.jpeg', '/product3.jpeg'],
     vendorCode: 20012,
     category: 'homesuits',
     type: 'sale',
@@ -148,7 +153,7 @@ export const productsArray = [
     id: '13',
     title: 'Бавовняний халат SEVILLA 7329/010 light powder (рожевий)',
     price: 999,
-    image: ['/product1.jpeg','/product1.jpeg', '/product1.jpeg'],
+    image: ['/product1.jpeg', '/product1.jpeg', '/product1.jpeg'],
     vendorCode: 20013,
     category: 'homesuits',
     type: 'sale',
@@ -160,11 +165,10 @@ export const productsArray = [
 
 export const slider = ['/slide1.jpeg', '/slide1.jpeg', '/slide1.jpeg']
 
-
 export const menu = [
   {
     name: 'Піжами',
-    link: '/pajamas'
+    link: '/pajamas',
   },
   {
     name: 'Нічні сорочки',
@@ -172,11 +176,11 @@ export const menu = [
   },
   {
     name: 'Халати',
-    link: '/robes'
+    link: '/robes',
   },
   {
     name: 'Домашні костюми',
-    link: '/homesuits'
+    link: '/homesuits',
   },
   {
     name: 'Світшоти',
@@ -185,4 +189,5 @@ export const menu = [
   {
     name: 'Штани та легінси',
     link: '/pantsandleggings',
-  }]
+  },
+]

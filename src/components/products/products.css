@@ -46,7 +46,7 @@
 }
 .newProductSlider .slick-arrow.slick-prev:before,
 .newProductSlider .slick-arrow.slick-next:before {
-  content: "";
+  content: '';
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -55,10 +55,10 @@
   display: inline-block;
 }
 .newProductSlider .slick-arrow.slick-prev:before {
-  background-image: url("/arrow-left.svg");
+  background-image: url('/arrow-left.svg');
 }
 .newProductSlider .slick-arrow.slick-next:before {
-  background-image: url("/arrow-right.svg");
+  background-image: url('/arrow-right.svg');
 }
 
 /* Стили для высоты слайдера в зависимости от ширины экрана */
