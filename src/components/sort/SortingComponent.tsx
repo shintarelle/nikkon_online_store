@@ -36,13 +36,25 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryP
         (size === '' || product.size.includes(size)) &&
         (color === '' || product.color.includes(color))
         );
-      });
-    if (JSON.stringify(sortedProducts) !== JSON.stringify(products)) {
+    });
 
+    if (JSON.stringify(sortedProducts) !== JSON.stringify(products)) {
       setProducts(sortedProducts);
       console.log('Sorted Products: ', sortedProducts);
     }
-}, [products, categoryProducts, minPrice, maxPrice, size, color, setProducts]);
+  }, [products, categoryProducts, minPrice, maxPrice, size, color, setProducts]);
+
+  const handleMinPriceChange = (value: string) => {
+  if (value === '' || /^\d+$/.test(value)) {
+    setMinPrice(value);
+  }
+};
+
+const handleMaxPriceChange = (value: string) => {
+  if (value === '' || /^\d+$/.test(value)) {
+    setMaxPrice(value);
+  }
+};
 
   return (
     <div className=' bg-powder-pink p-[10px] mt-8'>
@@ -53,17 +65,18 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryP
         <div className='flex gap-2 mb-3'>
           <div>
             <label className='hidden'>Min Price:</label>
-            <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
+            <input type="number" value={minPrice} onChange={e => handleMinPriceChange(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
           </div><span> - </span>
           <div>
             <label className='hidden'>Max Price:</label>
-            <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
+            <input type="number" value={maxPrice} onChange={e => handleMaxPriceChange(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
           </div>
         </div>
 
         <PriceRangeSlider
           minPrice={0}
           maxPrice={3000}
+          value={[Number(minPrice), Number(maxPrice)]}
           onMinPriceChange={setMinPrice}
           onMaxPriceChange={setMaxPrice}
         />

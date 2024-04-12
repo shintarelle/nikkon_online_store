@@ -5,27 +5,29 @@ import { useState, useEffect } from 'react';
 interface PriceRangeSliderProps {
   minPrice: number;
   maxPrice: number;
-  onMinPriceChange: (value: string) => void;
-  onMaxPriceChange: (value: string) => void;
+  value: number[];
+  onMinPriceChange: React.Dispatch<React.SetStateAction<string>>;
+  onMaxPriceChange: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const PriceRangeSlider: React.FC<PriceRangeSliderProps> = ({ minPrice, maxPrice, onMinPriceChange, onMaxPriceChange }) => {
-  const [values, setValues] = useState<number[]>([minPrice, maxPrice]);
+const PriceRangeSlider: React.FC<PriceRangeSliderProps> = ({ minPrice, maxPrice, value, onMinPriceChange, onMaxPriceChange }) => {
+
+  const [values, setValues] = useState<number[]>(value);
 
   const handleSliderChange = (newValues: number | number[]) => {
-    if (Array.isArray(newValues)) {
-      setValues(newValues);
-      onMinPriceChange(String(newValues[0]));
-      onMaxPriceChange(String(newValues[1]));
-    }
-  };
+  if (Array.isArray(newValues)) {
+    setValues(newValues);
+    onMinPriceChange(String(newValues[0]));
+    onMaxPriceChange(String(newValues[1]));
+  }
+};
 
   return (
     <div>
       <Slider
         min={minPrice}
         max={maxPrice}
-        value={values}
+        value={value}
         onChange={handleSliderChange}
         range
         trackStyle={[{ height: '8px', top: '3px', backgroundColor: '#545454' }]}
