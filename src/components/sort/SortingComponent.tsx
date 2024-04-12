@@ -1,6 +1,7 @@
 'use client'
 import Product from '@/app/types';
 import React, { useEffect, useState } from 'react';
+import PriceRangeSlider from './PriceRangeSlider';
 
 interface SortingComponentProps {
   products: Product[];
@@ -9,17 +10,17 @@ interface SortingComponentProps {
 }
 
 const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryProducts, setProducts }) => {
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+  const [minPrice, setMinPrice] = useState('0');
+  const [maxPrice, setMaxPrice] = useState('3000');
   const [size, setSize] = useState('');
   const [color, setColor] = useState('');
 
-  console.log('minPrice:', minPrice, 'maxPrice:', maxPrice, 'size:', size, 'color:', color);
-  console.log('products:', products, 'categoryProducts:', categoryProducts)
+  // console.log('minPrice:', minPrice, 'maxPrice:', maxPrice, 'size:', size, 'color:', color);
+  // console.log('products:', products, 'categoryProducts:', categoryProducts)
 
   const handleReset = () => {
-    setMinPrice('');
-    setMaxPrice('');
+    setMinPrice('0');
+    setMaxPrice('3000');
     setSize('');
     setColor('');
     setProducts(categoryProducts);
@@ -28,10 +29,10 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryP
   useEffect(() => {
     const sortedProducts = categoryProducts.filter(product => {
       const discountedPrice = product.discount ? Math.round(product.price - (product.price * product.discount / 100)) : product.price;
-      console.log(product.size)
+      // console.log(product.size)
       return (
-        (minPrice === '' || discountedPrice >= parseInt(minPrice)) &&
-        (maxPrice === '' || discountedPrice <= parseInt(maxPrice)) &&
+        (minPrice === '0' || discountedPrice >= parseInt(minPrice)) &&
+        (maxPrice === '3000' || discountedPrice <= parseInt(maxPrice)) &&
         (size === '' || product.size.includes(size)) &&
         (color === '' || product.color.includes(color))
         );
@@ -48,8 +49,8 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryP
       <div className='flex justify-between max-w-[1024px] mx-auto'>
 
       <div className=''>
-          <h2 className='text-xl font-bold'>Ціна</h2>
-        <div className='flex gap-2'>
+        <h2 className='text-xl font-bold'>Ціна</h2>
+        <div className='flex gap-2 mb-3'>
           <div>
             <label className='hidden'>Min Price:</label>
             <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
@@ -58,8 +59,14 @@ const SortingComponent: React.FC<SortingComponentProps> = ({ products, categoryP
             <label className='hidden'>Max Price:</label>
             <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} className='border border-light-grey w-[70px] rounded'/>
           </div>
-          </div>
-          {/* инпут ранже */}
+        </div>
+
+        <PriceRangeSlider
+          minPrice={0}
+          maxPrice={3000}
+          onMinPriceChange={setMinPrice}
+          onMaxPriceChange={setMaxPrice}
+        />
       </div>
 
       <div>
