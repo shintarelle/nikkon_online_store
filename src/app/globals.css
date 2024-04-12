@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../components/mainSlider/mainSlider.css";
-@import "../components/products/products.css";
-@import "../components/product/customProductSlider.css";
+@import '../components/mainSlider/mainSlider.css';
+@import '../components/products/products.css';
+@import '../components/product/customProductSlider.css';
 
 :root {
   --background: 255, 255, 255;
