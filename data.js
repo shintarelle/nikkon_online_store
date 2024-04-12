@@ -8,7 +8,7 @@ export const productsArray = [
     category: 'nightshirts',
     type: 'new',
     discount: 0,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
 
   },
@@ -21,7 +21,7 @@ export const productsArray = [
     category: 'pajamas',
     type: 'new',
     discount: 0,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -33,7 +33,7 @@ export const productsArray = [
     category: 'nightshirts',
     type: 'top',
     discount: 10,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -45,7 +45,7 @@ export const productsArray = [
     category: 'nightshirts',
     type: 'sale',
     discount: 30,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -57,7 +57,7 @@ export const productsArray = [
     category: 'homesuits',
     type: 'new',
     discount: 0,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -69,7 +69,7 @@ export const productsArray = [
     category: 'robes',
     type: 'new',
     discount: 0,
-    size: ['S', 'M', 'L', 'Xl'],
+    size: ['S', 'M', 'L', 'XL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -81,8 +81,8 @@ export const productsArray = [
     category: 'robes',
     type: 'new',
     discount: 0,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
-    color: ['blue', 'pink', 'white', 'black'],
+    size: ['S', 'M', 'L', 'XL'],
+    color: ['blue', 'pink', 'white'],
   },
   {
     id: '8',
@@ -93,7 +93,7 @@ export const productsArray = [
     category: 'homesuits',
     type: 'top',
     discount: 25,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -105,7 +105,7 @@ export const productsArray = [
     category: 'robes',
     type: 'top',
     discount: 10,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -117,8 +117,8 @@ export const productsArray = [
     category: 'homesuits',
     type: 'top',
     discount: 34,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
-    color: ['blue', 'pink', 'white', 'black'],
+    size: ['S', 'M', 'L', 'XL'],
+    color: ['blue', 'white', 'black'],
   },
   {
     id: '11',
@@ -129,7 +129,7 @@ export const productsArray = [
     category: 'homesuits',
     type: 'sale',
     discount: 34,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -141,7 +141,7 @@ export const productsArray = [
     category: 'homesuits',
     type: 'sale',
     discount: 49,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL', 'XXL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
   {
@@ -153,7 +153,7 @@ export const productsArray = [
     category: 'homesuits',
     type: 'sale',
     discount: 34,
-    size: ['S', 'M', 'L', 'Xl', 'XXl'],
+    size: ['S', 'M', 'L', 'XL'],
     color: ['blue', 'pink', 'white', 'black'],
   },
 ]

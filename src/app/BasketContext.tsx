@@ -56,7 +56,7 @@ useEffect(() => {
   const clearAll = () => {
     setCartItems([]);
   };
-  console.log("Basket items:", cartItems);
+  // console.log("Basket items:", cartItems);
 
   return (
     <BasketContext.Provider value={{ cartItems, addToCart, deleteItemById, clearAll }}>

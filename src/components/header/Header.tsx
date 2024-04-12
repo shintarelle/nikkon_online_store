@@ -74,6 +74,7 @@ function Header() {
 
         <ul className='flex justify-between items-center gap-6'>
           <li className='self-center'>
+            {/* продумать адаптив когда відкрит пошук */}
             <SearchInput />
           </li>
           <li className='self-center flex'>
