@@ -30,10 +30,22 @@ const DeliveryFrom = ({
   const [postOffices, setPostOffices] = useState<string[]>([])
 
   useEffect(() => {
-    //   // // Загрузка данных об областях
-    //   // fetch('https://api.example.com/regions')
-    //   //   .then(response => response.json())
-    //   //   .then(data => setRegions(data));
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    }
+    if (process.env.API_KEY) {
+      headers.apiKey = process.env.API_KEY
+    }
+
+    fetch('https://api.novaposhta.ua/v2.0/json/areas/getAreas', {
+      method: 'GET',
+      headers,
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error('Error:', error))
+      // .then((data) => setRegions(data.data.map((region: string[]) => region.Description)))
+
 
     //   // // Загрузка данных о городах
     //   // fetch('https://api.example.com/cities')
