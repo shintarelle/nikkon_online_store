@@ -10,10 +10,6 @@ const validationSchema = Yup.object().shape({
   postOffice: Yup.string().required('Выберите отделение новой почты'),
 })
 
-const area = ['Kharkivska', 'Kyevska', 'Odesska']
-const city = ['Kharkiv', 'Kyev', 'Odessa']
-const department = ['1', '2', '3']
-
 interface DeliveryFromProps {
   handleForm2Submit: (data: FormDeliveryData) => void
   handleStepClick: (newStep: number) => void
@@ -26,56 +22,102 @@ const DeliveryFrom = ({
   handleStepClick,
 }: DeliveryFromProps) => {
   const [regions, setRegions] = useState<string[]>([])
+  const [selectedRegion, setSelectedRegion] = useState('')
+
   const [cities, setCities] = useState<string[]>([])
+  const [selectedCity, setSelectedCity] = useState('')
+  const [cityRef, setCityRef] = useState('')
+
   const [postOffices, setPostOffices] = useState<string[]>([])
 
-  useEffect(() => {
-    const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
-    }
-    if (process.env.API_KEY) {
-      headers.apiKey = process.env.API_KEY
-    }
+  const apiKey = process.env.API_KEY
 
+  useEffect(() => {
+    // Загрузка данных о областях
     fetch('https://api.novaposhta.ua/v2.0/json/areas/getAreas', {
-      method: 'GET',
-      headers,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        apiKey,
+        modelName: 'Address',
+        calledMethod: 'getAreas',
+        methodProperties: {},
+      }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        const areas = data.data.map((item: any) => item.Description);
+        setRegions(areas);
+      })
       .catch((error) => console.error('Error:', error))
-      // .then((data) => setRegions(data.data.map((region: string[]) => region.Description)))
-
-
-    //   // // Загрузка данных о городах
-    //   // fetch('https://api.example.com/cities')
-    //   //   .then(response => response.json())
-    //   //   .then(data => setCities(data));
-
-    //   // // Загрузка данных об отделениях новой почты
-    //   // fetch('https://api.example.com/postOffices')
-    //   //   .then(response => response.json())
-    //   //   .then(data => setPostOffices(data));
-    setRegions(area)
-    setCities(city)
-    setPostOffices(department)
   }, [])
 
+  useEffect(() => {
+    // Загрузка данных о городах
+    if (selectedRegion) {
+      fetch('https://api.novaposhta.ua/v2.0/json/cities/getCities', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          apiKey,
+          modelName: 'Address',
+          calledMethod: 'getCities',
+          methodProperties: {},
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const citiesOfRegion = data.data.filter(
+            (item: any) => item.AreaDescription === selectedRegion,
+          )
+          const citiesNames = citiesOfRegion.map(
+            (item: any) => item.Description,
+          )
+          setCities(citiesNames)
+        })
+        .catch((error) => console.error('Error:', error))
+    }
+  }, [selectedRegion])
+
+  useEffect(() => {
+    // Загрузка данных об отделениях новой почты
+    if (selectedCity) {
+      fetch('https://api.novaposhta.ua/v2.0/json/warehouses/getwarehouses', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          apiKey,
+          modelName: 'Address',
+          calledMethod: 'getWarehouses',
+          methodProperties: {
+            CityName: selectedCity,
+          },
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const offices = data.data.map((item: any) => item.Description)
+          setPostOffices(offices)
+        })
+        .catch((error) => console.error('Error:', error))
+    }
+  }, [selectedCity])
+
+
   const handleRegionChange = (selectedRegion: string) => {
-    // This is just a mock implementation, replace it with actual API call logic
-    // to fetch cities based on the selected region.
-    // console.log('Selected region:', selectedRegion);
+    setSelectedRegion(selectedRegion)
   }
 
   const handleCityChange = (selectedCity: string) => {
-    // This is just a mock implementation, replace it with actual API call logic
-    // to fetch post offices based on the selected city.
-    // console.log('Selected city:', selectedCity);
+    setSelectedCity(selectedCity)
   }
   const handlePostOfficeChange = (selectedPostOffice: string) => {
-    // This is just a mock implementation, replace it with actual API call logic
-    // to perform any action based on the selected post office.
-    // console.log('Selected post office:', selectedPostOffice);
   }
 
   const handleSubmit = (values: FormDeliveryData) => {
@@ -119,9 +161,10 @@ const DeliveryFrom = ({
               className="text-red-500"
             />
           </div>
+          <p>{selectedRegion}</p>
           <div className="mb-4">
             <label htmlFor="city" className="block text-gray-700">
-              Город:
+              Місто:
             </label>
             <Field
               as="select"
@@ -148,7 +191,7 @@ const DeliveryFrom = ({
           </div>
           <div className="mb-4">
             <label htmlFor="postOffice" className="block text-gray-700">
-              Отделение Новой Почты:
+              Відділення Нової Пошти:
             </label>
             <Field
               as="select"
