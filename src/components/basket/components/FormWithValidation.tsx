@@ -4,13 +4,13 @@ import * as Yup from 'yup'
 import { FormData } from '../../../app/checkout/page'
 
 const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required('Обязательное поле'),
-  lastName: Yup.string().required('Обязательное поле'),
-  patronymic: Yup.string().required('Обязательное поле'),
+  firstName: Yup.string().required("Обов'язкове поле"),
+  lastName: Yup.string().required("Обов'язкове поле"),
+  patronymic: Yup.string().required("Обов'язкове поле"),
   phone: Yup.string()
-    .matches(/^\+380\d{9}$/, 'Некорректный формат номера')
-    .required('Обязательное поле'),
-  email: Yup.string().email('Некорректный email').required('Обязательное поле'),
+    .matches(/^\+380\d{9}$/, 'Введіть нумер в форматі +380000000000')
+    .required("Обов'язкове поле"),
+  email: Yup.string().email('Некорректний email').required("Обов'язкове поле"),
 })
 
 interface DeliveryFromProps {
@@ -39,7 +39,7 @@ const FormWithValidation = ({
       <Form className="p-4 bg-gray-100">
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-gray-700">
-            Имя:
+            Им'я:
           </label>
           <Field
             type="text"
@@ -55,7 +55,7 @@ const FormWithValidation = ({
         </div>
         <div className="mb-4">
           <label htmlFor="lastName" className="block text-gray-700">
-            Фамилия:
+            Фамілія:
           </label>
           <Field
             type="text"
@@ -71,7 +71,7 @@ const FormWithValidation = ({
         </div>
         <div className="mb-4">
           <label htmlFor="patronymic" className="block text-gray-700">
-            Отчество:
+            По-батькові:
           </label>
           <Field
             type="text"
@@ -121,7 +121,7 @@ const FormWithValidation = ({
         <div className="flex justify-end p-[20px]">
           <button
             type="submit"
-            className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-dark-grey focus:text-white"
+            className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white"
           >
             Далі
           </button>

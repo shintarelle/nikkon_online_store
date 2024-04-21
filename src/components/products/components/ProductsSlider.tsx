@@ -44,7 +44,7 @@ const ProductsSlider = ({ products }: NewProductsSliderProps) => {
   }
 
   return (
-    <section className='max-w-[1260px] h-full py-7 mx-auto overflow-hidden relative'>
+    <section className='max-w-[1260px] h-full pt-6 pb-9 mx-auto overflow-hidden relative'>
       <Slider
         {...slickSettings}
         className='newProductSlider relative '>

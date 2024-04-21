@@ -63,10 +63,10 @@ const SortingComponent: React.FC<SortingComponentProps> = ({
   }
 
   return (
-    <div className=" bg-powder-pink p-[10px] mt-8">
+    <div className=" bg-powder-pink p-[10px] mt-4">
       <div className="flex justify-between max-w-[1024px] mx-auto gap-5 flex-wrap">
         <div className="">
-          <h2 className="text-xl font-bold">Ціна</h2>
+          <h2 className="text-xl font-semibold">Ціна</h2>
           <div className="flex gap-2 mb-3">
             <div>
               <label className="hidden">Min Price:</label>
@@ -99,7 +99,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({
         </div>
 
         <div>
-          <h2 className="text-xl font-bold">Розмір</h2>
+          <h2 className="text-xl font-semibold">Розмір</h2>
           <label className="hidden">Size:</label>
           <select
             className="border border-light-grey w-[150px] rounded"
@@ -116,7 +116,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({
         </div>
 
         <div>
-          <h2 className="text-xl font-bold">Колір</h2>
+          <h2 className="text-xl font-semibold">Колір</h2>
           <label className="hidden">Color:</label>
           <select
             className="border border-light-grey w-[150px] rounded"
@@ -133,7 +133,7 @@ const SortingComponent: React.FC<SortingComponentProps> = ({
 
         <div className="self-center">
           <button
-            className="text-xl font-bold border p-2 hover:bg-white-grey rounded"
+            className="text-xl font-semibold border border-middle-grey p-2 hover:bg-white-grey rounded"
             onClick={handleReset}
           >
             Без фільтрів

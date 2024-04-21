@@ -26,7 +26,7 @@ const increaseQuantity = () => {
   return (
     <div className="">
       <label className="" htmlFor="input-quantity">
-        Количество
+        Кількість
         <div className="flex items-center border border-white-grey w-[100px]">
           <button type="button" className="flex-grow" onClick={decreaseQuantity}>
             <span className='text-lg'>-</span>

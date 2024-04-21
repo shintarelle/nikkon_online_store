@@ -6,7 +6,7 @@ interface TextProps {
 
 const Text: React.FC<TextProps> = ({ children }) => {
   return (
-    <p className="py-8" style={{ textIndent: '2em' }}>
+    <p className="pb-8 pt-2" style={{ textIndent: '2em' }}>
       {children}
     </p>
   )

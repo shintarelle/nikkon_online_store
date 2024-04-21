@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function NewCollection() {
   return (
-    <div className="max-w-[1240px] mt-0 mb-10 mx-auto">
+    <div className="max-w-[1240px] pt-8 mb-10 mx-auto">
       <Link href='#'>
         <Image src='/newCollection.jpeg' alt='link' width={100} height={100} className='w-full h-300'   ></Image>
       </Link>
