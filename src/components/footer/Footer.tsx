@@ -13,7 +13,7 @@ const tenorSans = Tenor_Sans({
 function Footer() {
   return (
     <>
-      <div className="bg-dark-grey w-full h-[30px]">Footer</div>
+      <div className="bg-dark-grey w-full h-[30px]"></div>
 
       <div className="bg-white w-full h-[200px] flex justify-between max-w-[1300px] mx-auto px-[10px]">
         <div className="flex justify-center items-center">
@@ -46,9 +46,6 @@ function Footer() {
               height="20"
               className="w-[22px] h-[22px]"
             />
-            <span className="underline hidden ml:inline-block">
-              Особистий кабінет
-            </span>
           </li>
           <li className="self-center">
             <Image

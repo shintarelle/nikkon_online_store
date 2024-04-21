@@ -43,7 +43,7 @@ function BasketCard() {
         </div>
         <div className="">Доставка</div>
         <div className="">за тарифами Нової Пошти</div>
-        <div className="">Итого:</div>
+        <div className="">Разом:</div>
         <div className="">
           {cartItems.length ? (
             <span className="text-md">{totalPrice}.00 грн</span>
@@ -66,7 +66,10 @@ function BasketCard() {
       )}
 
       <div className="py-[10px] flex justify-end">
-        <button className="bg-powder-pink p-[10px]" onClick={handleEditOrder}>
+        <button
+          className="bg-powder-pink p-[10px] hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white"
+          onClick={handleEditOrder}
+        >
           Редагувати замовлення
         </button>
       </div>

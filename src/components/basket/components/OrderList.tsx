@@ -18,12 +18,6 @@ function OrderList({ hidden }: OrderListProps) {
       {cartItems.length
         ? cartItems.map((item) => (
             <div key={item.id} className="relative">
-              <div
-                className={`absolute right-0 bottom-2 p-2 bg-powder-pink text-sm md:text-md ${hidden ? 'hidden' : ''}`}
-                onClick={() => handleDeleteItemClick(item.id)}
-              >
-                Віддалити
-              </div>
               <div className="flex gap-3">
                 <div className="w-[100px] h-auto">
                   <Image
@@ -57,6 +51,13 @@ function OrderList({ hidden }: OrderListProps) {
                     )}
                   </div>
                 </div>
+              </div>
+
+              <div
+                className={`xs:absolute text-center mt-3 xs:mt-0 right-0 bottom-2 p-2 bg-powder-pink text-sm md:text-md ${hidden ? 'hidden' : ''} hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white`}
+                onClick={() => handleDeleteItemClick(item.id)}
+              >
+                Віддалити
               </div>
 
               <div className="w-full h-[1px] bg-light-grey my-[15px]"></div>

@@ -27,6 +27,7 @@ const config: Config = {
       'pink': '#ff69b4',
     },
     screens: {
+      'xs': '400px',
       'sm': '640px',
       'md': '768px',
       'ml': '850px',

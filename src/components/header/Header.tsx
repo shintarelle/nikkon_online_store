@@ -105,9 +105,9 @@ function Header() {
               height="20"
               className="w-[22px] h-[22px]"
             />
-            <span className="underline hidden ml:inline-block">
+            {/* <span className="underline hidden ml:inline-block">
               Особистий кабінет
-            </span>
+            </span> */}
           </li>
           <li className="self-center">
             <Image
@@ -142,7 +142,7 @@ function Header() {
           <Burger />
         </ul>
       </div>
-      <nav className="hidden md:flex justify-center h-[50px] max-w-[1300px] mx-auto">
+      <nav className="hidden md:flex justify-center h-[50px] max-w-[1300px] mx-auto mt-5">
         <ul className="flex gap-0 lg:gap-7  my-0 mx-auto self-center">
           {menu.map((item) => (
             <li className="" key={item.name}>

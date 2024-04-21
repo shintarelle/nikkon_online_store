@@ -17,7 +17,7 @@ function SizeRadiogroup({ group, size, onChange}: SizeRadiogrupProps) {
 
   return (
     <div>
-    <p className='text-md mb-1'>Размер</p>
+    <p className='text-md mb-1'>Розмір</p>
     <div className="flex items-center space-x-4">
       {group.map((size) => (
         <label key={size} className="relative flex items-center">

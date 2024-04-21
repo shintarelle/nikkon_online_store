@@ -5,9 +5,9 @@ import * as Yup from 'yup'
 import { FormDeliveryData } from '../../../app/checkout/page'
 
 const validationSchema = Yup.object().shape({
-  region: Yup.string().required('Выберите область'),
-  city: Yup.string().required('Выберите город'),
-  postOffice: Yup.string().required('Выберите отделение новой почты'),
+  region: Yup.string().required("Обов'язкове поле"),
+  city: Yup.string().required("Обов'язкове поле"),
+  postOffice: Yup.string().required("Обов'язкове поле"),
 })
 
 interface DeliveryFromProps {
@@ -148,7 +148,7 @@ const DeliveryFrom = ({
                 handleRegionChange(e.target.value)
               }}
             >
-              <option value="">Выберите область</option>
+              <option value="">Вибрати область</option>
               {regions.map((region, index) => (
                 <option key={index} value={region}>
                   {region}
@@ -158,10 +158,9 @@ const DeliveryFrom = ({
             <ErrorMessage
               name="region"
               component="div"
-              className="text-red-500"
+              className="text-powder-red"
             />
           </div>
-          <p>{selectedRegion}</p>
           <div className="mb-4">
             <label htmlFor="city" className="block text-gray-700">
               Місто:
@@ -176,7 +175,7 @@ const DeliveryFrom = ({
                 handleCityChange(e.target.value)
               }}
             >
-              <option value="">Выберите город</option>
+              <option value="">Вибрати місто</option>
               {cities.map((city, index) => (
                 <option key={index} value={city}>
                   {city}
@@ -186,7 +185,7 @@ const DeliveryFrom = ({
             <ErrorMessage
               name="city"
               component="div"
-              className="text-red-500"
+              className="text-powder-red"
             />
           </div>
           <div className="mb-4">
@@ -199,7 +198,7 @@ const DeliveryFrom = ({
               name="postOffice"
               className="form-select mt-1 block w-full p-2 border border-light-grey"
             >
-              <option value="">Выберите отделение Новой Почты</option>
+              <option value="">Вибрати відділення Нової Пошти</option>
               {postOffices.map((office, index) => (
                 <option key={index} value={office}>
                   {office}
@@ -209,20 +208,22 @@ const DeliveryFrom = ({
             <ErrorMessage
               name="postOffice"
               component="div"
-              className="text-red-500"
+              className="text-powder-red"
             />
           </div>
 
+          <p>Уважно! Доставка накладеним платежом, оплата при отриманні</p>
+
           <div className="flex justify-between p-[20px]">
             <button
-              className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-dark-grey focus:text-white"
+              className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white"
               onClick={() => handleStepClick(1)}
             >
               Назад
             </button>
             <button
               type="submit"
-              className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-dark-grey focus:text-white"
+              className="bg-powder-pink px-7 py-2 text-md font-medium hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white"
             >
               Далі
             </button>

@@ -24,6 +24,7 @@ export interface FormDeliveryData {
 
 const Checkout = () => {
   const [step, setStep] = useState(1) // Текущий шаг оформления заказа
+  const [orderCompleeted, setOrderCompleeted] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -70,12 +71,13 @@ const Checkout = () => {
       postOffice: '',
     })
     clearAll()
-    handleClicktoHomePage()
+    setOrderCompleeted(!orderCompleeted)
   }
 
   const handleClicktoHomePage = () => {
     router.push('/')
   }
+
 
   // Обработчик для переключения шагов по клику на черту
   const handleStepClick = (newStep: number) => {
@@ -86,18 +88,34 @@ const Checkout = () => {
   return (
     <>
       {!cartItems.length ? (
-        <div className="h-screen max-w-[1024px] mx-auto flex justify-between">
-          <p className="mb-[50px]">Ваша корзина пуста</p>
-          <div className="pt-[100px]">
-            <Button
-              title={'Продолжить'}
-              textSize={'md'}
-              onClick={handleClicktoHomePage}
-            />
-          </div>
+        <div className="h-screen max-w-[1024px] mx-auto flex flex-col">
+          {orderCompleeted ? (
+            <>
+              <p className="mb-[50px] text-center">
+                Ваше замовлення прийнято! Дякуємо за замовлення!
+              </p>
+              <div className="pt-[100px] self-end ">
+                <Button
+                  title={'На головну'}
+                  textSize={'md'}
+                  onClick={handleClicktoHomePage}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="mb-[50px] text-center">Ваш кошик пуст</p>
+              <div className="pt-[100px] self-end ">
+                <Button
+                  title={'Продовжити'}
+                  textSize={'md'}
+                  onClick={handleClicktoHomePage}
+                />
+              </div>
+            </>)}
         </div>
       ) : (
-        <div>
+        <div className="max-w-[1024px] mx-auto">
           <Heading title={'Оформление заказа'} />
           <div className="flex flex-col md:flex-row justify-between gap-7 p-[30px] ">
             <div className="flex flex-col gap-5 grow">
@@ -136,7 +154,7 @@ const Checkout = () => {
 
               {step === 1 && (
                 <div className="flex flex-col justify-between gap-5">
-                  <h1 className=" md:text-3xl uppercase">
+                  <h1 className=" md:text-2xl uppercase">
                     Контактна інформація
                   </h1>
                   <FormWithValidation
@@ -148,7 +166,7 @@ const Checkout = () => {
               )}
               {step === 2 && (
                 <div className="flex flex-col justify-between gap-5">
-                  <h1 className="text-3xl uppercase">Доставка</h1>
+                  <h1 className="md:text-2xl uppercase">Доставка</h1>
                   <DeliveryForm
                     initialValues={formDeliveryData}
                     handleForm2Submit={handleForm2Submit}
@@ -158,9 +176,21 @@ const Checkout = () => {
               )}
               {step === 3 && (
                 <div className="flex flex-col justify-between gap-5">
-                  <h1 className="text-3xl uppercase">Вже почти все</h1>
+                  <h1 className="md:text-2xl uppercase">Перевірте ваші дані</h1>
+                  <div className="grid grid-cols-4 gap-2">
+                    <div className="col-span-1 p-4 ">ФІО:</div>
+                    <div className="col-span-3 p-4 ">{`${formData.lastName} ${formData.firstName} ${formData.patronymic}`}</div>
+                    <div className="col-span-1 p-4 ">Телефон:</div>
+                    <div className="col-span-3 p-4 ">{formData.phone}</div>
+                    <div className="col-span-1 p-4 ">Email:</div>
+                    <div className="col-span-3 p-4 ">{formData.email}</div>
+                    <div className="col-span-1 p-4 ">Адреса доставки:</div>
+                    <div className="col-span-3 p-4 ">{`${formDeliveryData.region} обл, ${formDeliveryData.city}, ${formDeliveryData.postOffice}`}</div>
+                    <div className="col-span-1 p-4 ">Тип доставки:</div>
+                    <div className="col-span-3 p-4 ">Накладений платіж</div>
+                  </div>
 
-                  <div className="flex justify-between p-[20px]">
+                  <div className="flex justify-between p-[20px] gap-2">
                     <Button
                       onClick={() => handleStepClick(2)}
                       title={'Назад'}
