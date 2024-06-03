@@ -57,7 +57,7 @@ function OrderList({ hidden }: OrderListProps) {
                 className={`xs:absolute text-center mt-3 xs:mt-0 right-0 bottom-2 p-2 bg-powder-pink text-sm md:text-md ${hidden ? 'hidden' : ''} hover:bg-dark-grey hover:text-white focus:bg-black focus:text-white`}
                 onClick={() => handleDeleteItemClick(item.id)}
               >
-                Віддалити
+                Видалити
               </div>
 
               <div className="w-full h-[1px] bg-light-grey my-[15px]"></div>
